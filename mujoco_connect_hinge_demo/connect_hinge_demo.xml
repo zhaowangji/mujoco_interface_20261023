@@ -1,0 +1,43 @@
+<mujoco model="connect_hinge_demo">
+  <compiler angle="radian"/>
+  <option timestep="0.001" gravity="0 0 0" integrator="implicitfast"
+          solver="Newton" iterations="100" tolerance="1e-10"/>
+
+  <worldbody>
+    <!-- Two fixed world anchors on the intended hinge axis (X axis). -->
+    <site name="world_axis_1" pos="-0.10 0 0" size="0.006"
+          type="sphere" rgba="1 0 0 1"/>
+    <site name="world_axis_2" pos="0.10 0 0" size="0.006"
+          type="sphere" rgba="0 0 1 1"/>
+
+    <!-- One free body. The two connect equalities below leave rotation
+         about the line joining the two anchors as the intended DOF. -->
+    <body name="test_link" pos="0 0 0">
+      <freejoint name="test_free"/>
+      <inertial pos="0 0 0" mass="1"
+                diaginertia="0.01 0.02 0.02"/>
+      <!-- Long bar aligned with the hinge axis -->
+      <geom name="bar" type="box" pos="0 0 0"
+            size="0.10 0.012 0.012" rgba="0.7 0.7 0.75 1"
+            contype="0" conaffinity="0"/>
+      <!-- Off-axis marker makes rotation visible -->
+      <geom name="rotation_marker" type="box" pos="0 0.045 0"
+            size="0.018 0.008 0.008" rgba="1 0.5 0 1"
+            contype="0" conaffinity="0"/>
+      <!-- Matching sites on the moving body -->
+      <site name="link_axis_1" pos="-0.10 0 0" size="0.004"
+            type="sphere" rgba="1 0 0 1"/>
+      <site name="link_axis_2" pos="0.10 0 0" size="0.004"
+            type="sphere" rgba="0 0 1 1"/>
+    </body>
+  </worldbody>
+
+  <equality>
+    <!-- Each connect ties one point on the moving body to one fixed point.
+         Two collinear connects model a hinge outside the kinematic tree. -->
+    <connect name="hinge_point_1" site1="link_axis_1" site2="world_axis_1"
+             solref="0.002 1" solimp="0.99 0.999 0.001"/>
+    <connect name="hinge_point_2" site1="link_axis_2" site2="world_axis_2"
+             solref="0.002 1" solimp="0.99 0.999 0.001"/>
+  </equality>
+</mujoco>

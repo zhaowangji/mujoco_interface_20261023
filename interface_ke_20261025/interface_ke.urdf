@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="interface_ke">
+  <link
+    name="keti">
+    <inertial>
+      <origin
+        xyz="-0.00018736 0.00013355 -0.0086321"
+        rpy="0 0 0" />
+      <mass
+        value="5.225" />
+      <inertia
+        ixx="0.075722"
+        ixy="8.9035E-05"
+        ixz="0.00010681"
+        iyy="0.075802"
+        iyz="-3.6811E-05"
+        izz="0.10655" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface_ke/meshes/keti.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface_ke/meshes/keti.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="paw1">
+    <inertial>
+      <origin
+        xyz="0.00526140297654257 0.0211926853624285 -1.16566684936318E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.11476078857248" />
+      <inertia
+        ixx="0.000202728068431762"
+        ixy="-4.04736730946907E-05"
+        ixz="2.62802995157672E-08"
+        iyy="4.76925449758943E-05"
+        iyz="5.87203147085692E-08"
+        izz="0.000233536551667223" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface_ke/meshes/paw1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.956862745098039 0.745098039215686 0.847058823529412 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface_ke/meshes/paw1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_paw1"
+    type="revolute">
+    <origin
+      xyz="-0.07844 0.13593 -0.032"
+      rpy="1.5708 -1.4878 -1.0472" />
+    <parent
+      link="keti" />
+    <child
+      link="paw1" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.141593"
+      upper="3.141593"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="paw2">
+    <inertial>
+      <origin
+        xyz="0.00524883972309082 0.0212464238952846 -1.16312847810995E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.114925706317884" />
+      <inertia
+        ixx="0.000202987403770374"
+        ixy="-4.04047725786076E-05"
+        ixz="2.63069901012935E-08"
+        iyy="4.77144743220576E-05"
+        iyz="5.86065488559414E-08"
+        izz="0.000233815446772037" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface_ke/meshes/paw2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.956862745098039 0.745098039215686 0.847058823529412 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface_ke/meshes/paw2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_paw2"
+    type="revolute">
+    <origin
+      xyz="-0.07844 -0.136 -0.032"
+      rpy="1.5708 -1.4878 1.0472" />
+    <parent
+      link="keti" />
+    <child
+      link="paw2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.141593"
+      upper="3.141593"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="paw3">
+    <inertial>
+      <origin
+        xyz="0.00524883144010767 0.0212464187516362 -1.16367580224319E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.114925663188327" />
+      <inertia
+        ixx="0.000202987381658301"
+        ixy="-4.04047569519617E-05"
+        ixz="2.62844285577093E-08"
+        iyy="4.77144469884206E-05"
+        iyz="5.86365029561632E-08"
+        izz="0.000233815403787295" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface_ke/meshes/paw3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.956862745098039 0.745098039215686 0.847058823529412 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface_ke/meshes/paw3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_paw3"
+    type="revolute">
+    <origin
+      xyz="0.15706 -3.4828E-05 -0.032"
+      rpy="1.5708 -1.4878 -3.1416" />
+    <parent
+      link="keti" />
+    <child
+      link="paw3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.141593"
+      upper="3.141593"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>

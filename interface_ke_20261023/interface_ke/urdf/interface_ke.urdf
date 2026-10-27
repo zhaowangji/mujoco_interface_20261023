@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="interface_ke">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00012081 7.1779E-05 -0.036715"
+        rpy="0 0 0" />
+      <mass
+        value="1.6884" />
+      <inertia
+        ixx="0.021988"
+        ixy="2.2787E-05"
+        ixz="2.2964E-06"
+        iyy="0.021917"
+        iyz="3.6136E-06"
+        izz="0.038493" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface_ke/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface_ke/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="link_ke1">
+    <inertial>
+      <origin
+        xyz="0.0052614 0.021193 -1.1657E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.11476" />
+      <inertia
+        ixx="0.00020273"
+        ixy="-4.0474E-05"
+        ixz="2.628E-08"
+        iyy="4.7693E-05"
+        iyz="5.872E-08"
+        izz="0.00023354" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface_ke/meshes/link_ke1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.95686 0.7451 0.84706 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface_ke/meshes/link_ke1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_ke1"
+    type="continuous">
+    <origin
+      xyz="-0.07844 0.13593 -0.032"
+      rpy="1.5708 -1.4878 -1.0472" />
+    <parent
+      link="base_link" />
+    <child
+      link="link_ke1" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="link_ke2">
+    <inertial>
+      <origin
+        xyz="0.0052488 0.021246 -1.1631E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.11493" />
+      <inertia
+        ixx="0.00020299"
+        ixy="-4.0405E-05"
+        ixz="2.6307E-08"
+        iyy="4.7714E-05"
+        iyz="5.8607E-08"
+        izz="0.00023382" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface_ke/meshes/link_ke2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.95686 0.7451 0.84706 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface_ke/meshes/link_ke2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_ke2"
+    type="continuous">
+    <origin
+      xyz="-0.07844 -0.136 -0.032"
+      rpy="1.5708 -1.4878 1.0472" />
+    <parent
+      link="base_link" />
+    <child
+      link="link_ke2" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="link_ke3">
+    <inertial>
+      <origin
+        xyz="0.00012081 7.1779E-05 -0.036715"
+        rpy="0 0 0" />
+      <mass
+        value="1.6884" />
+      <inertia
+        ixx="0.021988"
+        ixy="2.2787E-05"
+        ixz="2.2964E-06"
+        iyy="0.021917"
+        iyz="3.6136E-06"
+        izz="0.038493" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface_ke/meshes/link_ke3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface_ke/meshes/link_ke3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_ke3"
+    type="continuous">
+    <origin
+      xyz="0.15706 -3.4828E-05 -0.032"
+      rpy="1.5708 -1.4878 -3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="link_ke3" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+</robot>

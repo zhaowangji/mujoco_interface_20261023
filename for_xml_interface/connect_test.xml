@@ -1,0 +1,55 @@
+
+<mujoco model="connect_only_test">
+    <compiler angle="radian" meshdir="."/>
+
+    <option timestep="0.001" gravity="0 0 0"/>
+
+    <asset>
+        <mesh name="paw_mesh" file="link_paw1.STL"/>
+    </asset>
+
+    <worldbody>
+        <body name="link_paw1"
+              pos="-0.05352586110676478 0.09278384860633009 -0.03614667585259858"
+              quat="0.41163593610758537 0.7037308907698236 -0.0690212892868031 -0.5749389107603781">
+
+            <freejoint name="paw_free"/>
+
+            <inertial
+                pos="-0.0548349 -0.045708 -1.16567e-05"
+                quat="-0.184372 0.682443 0.18469 0.682765"
+                mass="0.114761"
+                diaginertia="0.000233537 0.000212658 3.77625e-05"/>
+
+            <geom type="mesh"
+                  mesh="paw_mesh"
+                  contype="0"
+                  conaffinity="0"
+                  rgba="0.956863 0.745098 0.847059 1"/>
+        </body>
+
+        <site name="axis_a"
+              pos="-0.065449 0.14343 -0.032"
+              size="0.004"
+              type="sphere"
+              rgba="1 0 0 1"/>
+
+        <site name="axis_b"
+              pos="-0.09143 0.12843 -0.032"
+              size="0.004"
+              type="sphere"
+              rgba="0 1 0 1"/>
+    </worldbody>
+
+    <equality>
+        <connect
+            name="connect_paw1_a"
+            body1="link_paw1"
+            anchor="-0.065449 0.14343 -0.032"/>
+
+        <connect
+            name="connect_paw1_b"
+            body1="link_paw1"
+            anchor="-0.09143 0.12843 -0.032"/>
+    </equality>
+</mujoco>

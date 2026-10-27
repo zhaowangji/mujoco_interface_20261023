@@ -1,0 +1,296 @@
+<mujoco model="interface">
+
+  <compiler angle="radian"/>
+
+  <option
+      timestep="0.001"
+      gravity="0 0 0"
+      integrator="implicitfast"
+      solver="Newton"
+      iterations="100"
+      tolerance="1e-10"/>
+
+  <asset>
+    <mesh name="base_link" content_type="model/stl" file="base_link.STL"/>
+    <mesh name="link_sigangluomu" content_type="model/stl" file="link_sigangluomu.STL"/>
+    <mesh name="link_gan1" content_type="model/stl" file="link_gan1.STL"/>
+    <mesh name="link_paw1" content_type="model/stl" file="link_paw1.STL"/>
+    <mesh name="link_gan2" content_type="model/stl" file="link_gan2.STL"/>
+    <mesh name="link_paw2" content_type="model/stl" file="link_paw2.STL"/>
+    <mesh name="link_gan3" content_type="model/stl" file="link_gan3.STL"/>
+    <mesh name="link_paw3" content_type="model/stl" file="link_paw3.STL"/>
+  </asset>
+
+  <worldbody>
+
+    <!-- 固定基座：暂时关闭壳体碰撞 -->
+    <geom
+        name="base_geom"
+        type="mesh"
+        rgba="1 1 1 1"
+        mesh="base_link"
+        contype="0"
+        conaffinity="0"/>
+
+    <!-- 丝杠螺母 -->
+    <body
+        name="link_sigangluomu"
+        pos="6.0324e-05 -3.4828e-05 -0.013">
+
+      <inertial
+          pos="0.000254122 -0.000151219 -0.0155488"
+          quat="0.187682 0.6816 -0.187586 0.681915"
+          mass="0.235428"
+          diaginertia="0.0014991 0.000773109 0.000769069"/>
+
+      <joint
+          name="joint_sigangluomu"
+          pos="0 0 0"
+          axis="0 0 1"
+          type="slide"
+          range="-10 10"/>
+
+      <geom
+          type="mesh"
+          rgba="1 0.662745 1 1"
+          mesh="link_sigangluomu"/>
+
+      <!-- ================================================= -->
+      <!-- 连杆1 -->
+      <!-- ================================================= -->
+      <body
+          name="link_gan1"
+          pos="-0.0635 0.10999 -0.0005"
+          quat="0.411636 0.703731 -0.0690213 -0.574939">
+
+        <inertial
+            pos="0.0101045 0 0"
+            quat="0.5 0.5 0.5 0.5"
+            mass="0.0132811"
+            diaginertia="4.11628e-06 3.25738e-06 2.32614e-06"/>
+
+        <joint
+            name="joint_gan1"
+            pos="0 0 0"
+            axis="0 0 -1"/>
+
+        <geom
+            type="mesh"
+            rgba="1 1 1 1"
+            mesh="link_gan1"/>
+
+        <!-- ================================================= -->
+        <!-- 夹爪1 -->
+        <!-- ================================================= -->
+        <body
+            name="link_paw1"
+            pos="0.0301 0 0">
+
+          <inertial
+              pos="-0.0548349 -0.045708 -1.16567e-05"
+              quat="-0.184372 0.682443 0.18469 0.682765"
+              mass="0.114761"
+              diaginertia="0.000233537 0.000212658 3.77625e-05"/>
+
+          <!-- 保留夹爪1与连杆1之间的原旋转副 -->
+          <joint
+              name="joint_paw1"
+              pos="0 0 0"
+              axis="0 0 -1"/>
+
+          <geom
+              type="mesh"
+              rgba="0.956863 0.745098 0.847059 1"
+              mesh="link_paw1"/>
+
+          <!--
+            夹爪1上的两个局部 Site。
+            它们用于构造夹爪1与固定基座之间的旋转副。
+            两个 Site 沿局部 Z 轴布置，间距 30 mm。
+          -->
+          <site
+              name="paw1_axis_site_a"
+              pos="-0.03593934 -0.03475397 -0.015"
+              size="0.003"
+              type="sphere"
+              rgba="1 0 0 1"/>
+
+          <site
+              name="paw1_axis_site_b"
+              pos="-0.03593934 -0.03475397 0.015"
+              size="0.003"
+              type="sphere"
+              rgba="0 1 0 1"/>
+
+        </body>
+      </body>
+
+      <!-- ================================================= -->
+      <!-- 连杆2 -->
+      <!-- ================================================= -->
+      <body
+          name="link_gan2"
+          pos="-0.0635 -0.10999 -0.0005"
+          quat="0.703729 0.411638 0.574939 0.0690192">
+
+        <inertial
+            pos="0.0101045 0 0"
+            quat="0.5 0.5 0.5 0.5"
+            mass="0.0132811"
+            diaginertia="4.11628e-06 3.25738e-06 2.32614e-06"/>
+
+        <joint
+            name="joint_gan2"
+            pos="0 0 0"
+            axis="0 0 1"/>
+
+        <geom
+            type="mesh"
+            rgba="1 1 1 1"
+            mesh="link_gan2"/>
+
+        <body
+            name="link_paw2"
+            pos="0.0301 0 0">
+
+          <inertial
+              pos="-0.0548648 -0.0457543 -1.16313e-05"
+              quat="-0.184597 0.682382 0.184917 0.682704"
+              mass="0.114926"
+              diaginertia="0.000233815 0.000212872 3.78297e-05"/>
+
+          <joint
+              name="joint_paw2"
+              pos="0 0 0"
+              axis="0 0 1"/>
+
+          <geom
+              type="mesh"
+              rgba="0.956863 0.745098 0.847059 1"
+              mesh="link_paw2"/>
+
+        </body>
+      </body>
+
+      <!-- ================================================= -->
+      <!-- 连杆3 -->
+      <!-- ================================================= -->
+      <body
+          name="link_gan3"
+          pos="0.127 0 -0.0005"
+          quat="-0.292096 0.29209 -0.64396 -0.643956">
+
+        <inertial
+            pos="0.0101045 0 0"
+            quat="0.5 0.5 0.5 0.5"
+            mass="0.0132811"
+            diaginertia="4.11628e-06 3.25738e-06 2.32614e-06"/>
+
+        <joint
+            name="joint_gan3"
+            pos="0 0 0"
+            axis="0 0 1"/>
+
+        <geom
+            type="mesh"
+            rgba="1 1 1 1"
+            mesh="link_gan3"/>
+
+        <body
+            name="link_paw3"
+            pos="0.0301 0 0">
+
+          <inertial
+              pos="-0.0548648 -0.0457543 -1.16368e-05"
+              quat="-0.184598 0.682382 0.184916 0.682704"
+              mass="0.114926"
+              diaginertia="0.000233815 0.000212872 3.78297e-05"/>
+
+          <joint
+              name="joint_paw3"
+              pos="0 0 0"
+              axis="0 0 1"/>
+
+          <geom
+              type="mesh"
+              rgba="0.956863 0.745098 0.847059 1"
+              mesh="link_paw3"/>
+
+        </body>
+      </body>
+
+    </body>
+
+    <!-- ================================================= -->
+    <!-- 世界坐标系中的参考点 -->
+    <!-- ================================================= -->
+
+    <site
+        name="test_point"
+        pos="-0.07844 0.13593 -0.032"
+        size="0.005"
+        type="sphere"
+        rgba="1 0 0 1"/>
+
+    <!-- 固定旋转轴上的两个锚点 -->
+    <site
+        name="world_paw1_axis_site_a"
+        pos="-0.065449 0.14343 -0.032"
+        size="0.003"
+        type="sphere"
+        rgba="1 0 0 1"/>
+
+    <site
+        name="world_paw1_axis_site_b"
+        pos="-0.09143 0.12843 -0.032"
+        size="0.003"
+        type="sphere"
+        rgba="0 1 0 1"/>
+
+  </worldbody>
+
+  <!-- ===================================================== -->
+  <!-- 丝杠螺母执行器 -->
+  <!-- ===================================================== -->
+  <!-- <actuator>
+
+    <position
+        name="actuator_sigangluomu"
+        joint="joint_sigangluomu"
+        kp="10"/>
+
+  </actuator> -->
+
+  <!-- ===================================================== -->
+  <!-- 闭环约束 -->
+  <!-- ===================================================== -->
+  <equality>
+
+    <!--
+      link_paw1 与固定基座构成旋转副。
+
+      两个 connect 分别约束两个对应 Site。
+      不删除 joint_paw1，因为它还负责连接 link_gan1。
+    -->
+    <connect
+        name="connect_paw1_a"
+        site1="paw1_axis_site_a"
+        site2="world_paw1_axis_site_a"
+        solref="0.002 1"
+        solimp="0.99 0.999 0.001"/>
+
+    <connect
+        name="connect_paw1_b"
+        site1="paw1_axis_site_b"
+        site2="world_paw1_axis_site_b"
+        solref="0.002 1"
+        solimp="0.99 0.999 0.001"/>
+
+    <!--
+      paw2 和 paw3 的闭环约束暂时不启用。
+      等 paw1 的闭环验证通过后，再逐一添加。
+    -->
+
+  </equality>
+
+</mujoco>

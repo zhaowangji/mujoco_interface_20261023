@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="interface">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00012080771538443 7.17794481618687E-05 -0.0367152848370495"
+        rpy="0 0 0" />
+      <mass
+        value="1.6884153203787" />
+      <inertia
+        ixx="0.0219877639959177"
+        ixy="2.27866641632109E-05"
+        ixz="2.29639071508771E-06"
+        iyy="0.0219170142646625"
+        iyz="3.61364051362422E-06"
+        izz="0.0384925499694706" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="link_sigangluomu">
+    <inertial>
+      <origin
+        xyz="0.000254121728951753 -0.0001512185784841 -0.0155487512925986"
+        rpy="0 0 0" />
+      <mass
+        value="0.235427923429964" />
+      <inertia
+        ixx="0.000770126515181142"
+        ixy="1.77593943212782E-06"
+        ixz="-2.87946623721882E-07"
+        iyy="0.000772050847604667"
+        iyz="1.81644941971848E-07"
+        izz="0.00149909975897245" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface/meshes/link_sigangluomu.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.662745098039216 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface/meshes/link_sigangluomu.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_sigangluomu"
+    type="prismatic">
+    <origin
+      xyz="6.0324E-05 -3.4828E-05 -0.013"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="link_sigangluomu" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-10"
+      upper="10"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="link_gan1">
+    <inertial>
+      <origin
+        xyz="0.0101045395839432 -1.38777878078145E-17 -3.23869234047422E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.0132810984591575" />
+      <inertia
+        ixx="2.32613897338988E-06"
+        ixy="6.35274710440725E-22"
+        ixz="2.73609417366445E-21"
+        iyy="4.11628491602783E-06"
+        iyz="-9.46702639517894E-22"
+        izz="3.25737577734755E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface/meshes/link_gan1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface/meshes/link_gan1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_gan1"
+    type="continuous">
+    <origin
+      xyz="-0.0635 0.10999 -0.0005"
+      rpy="1.5708 0.85167 -1.0472" />
+    <parent
+      link="link_sigangluomu" />
+    <child
+      link="link_gan1" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="link_paw1">
+    <inertial>
+      <origin
+        xyz="-0.0548348758661997 -0.0457079555343899 -1.16566684936312E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.11476078857248" />
+      <inertia
+        ixx="8.21616539977427E-05"
+        ixy="-7.61179026069127E-05"
+        ixz="-6.0480473633756E-08"
+        iyy="0.000168258959409913"
+        iyz="-2.19281055075103E-08"
+        izz="0.000233536551667223" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface/meshes/link_paw1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.956862745098039 0.745098039215686 0.847058823529412 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface/meshes/link_paw1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_paw1"
+    type="continuous">
+    <origin
+      xyz="0.0301 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="link_gan1" />
+    <child
+      link="link_paw1" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="link_gan2">
+    <inertial>
+      <origin
+        xyz="0.0101045395839442 1.30451205393456E-15 1.99146255042137E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.0132810984591574" />
+      <inertia
+        ixx="2.32613897338984E-06"
+        ixy="6.02981579326655E-20"
+        ixz="2.23299060719915E-19"
+        iyy="4.11628491602766E-06"
+        iyz="-6.56450534122083E-21"
+        izz="3.25737577734737E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface/meshes/link_gan2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface/meshes/link_gan2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_gan2"
+    type="continuous">
+    <origin
+      xyz="-0.0635 -0.10999 -0.0005"
+      rpy="1.5708 0.85167 1.0472" />
+    <parent
+      link="link_sigangluomu" />
+    <child
+      link="link_gan2" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="link_paw2">
+    <inertial>
+      <origin
+        xyz="-0.054864772750387 -0.0457543434807413 -1.16312847808983E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.114925706317884" />
+      <inertia
+        ixx="8.2367170279816E-05"
+        ixy="-7.62388478705649E-05"
+        ixz="-6.0417246407715E-08"
+        iyy="0.000168334707812615"
+        iyz="-2.18298335663902E-08"
+        izz="0.000233815446772037" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface/meshes/link_paw2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.956862745098039 0.745098039215686 0.847058823529412 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface/meshes/link_paw2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_paw2"
+    type="continuous">
+    <origin
+      xyz="0.0301 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="link_gan2" />
+    <child
+      link="link_paw2" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="link_gan3">
+    <inertial>
+      <origin
+        xyz="0.0101045395839445 1.38777878078145E-15 -1.76941794549634E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.0132810984591575" />
+      <inertia
+        ixx="2.32613897338986E-06"
+        ixy="6.70744215106999E-20"
+        ixz="-2.33781093442187E-19"
+        iyy="4.11628491602773E-06"
+        iyz="-2.43521972335611E-21"
+        izz="3.25737577734743E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface/meshes/link_gan3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface/meshes/link_gan3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_gan3"
+    type="continuous">
+    <origin
+      xyz="0.127 0 -0.0005"
+      rpy="1.5708 0.85167 -3.1416" />
+    <parent
+      link="link_sigangluomu" />
+    <child
+      link="link_gan3" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="link_paw3">
+    <inertial>
+      <origin
+        xyz="-0.0548647632948589 -0.045754345859375 -1.16367580229176E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.114925663188327" />
+      <inertia
+        ixx="8.23671610873377E-05"
+        ixy="-7.62388510035468E-05"
+        ixz="-6.04230952940608E-08"
+        iyy="0.000168334667559384"
+        iyz="-2.18668749211793E-08"
+        izz="0.000233815403787295" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface/meshes/link_paw3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.956862745098039 0.745098039215686 0.847058823529412 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://interface/meshes/link_paw3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_paw3"
+    type="continuous">
+    <origin
+      xyz="0.0301 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="link_gan3" />
+    <child
+      link="link_paw3" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+</robot>

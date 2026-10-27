@@ -1,0 +1,149 @@
+<mujoco model="interface_ke_fixed">
+
+  <compiler angle="radian"/>
+
+  <option
+      timestep="0.001"
+      gravity="0 0 0"
+      integrator="implicitfast"
+      solver="Newton"
+      iterations="100"
+      tolerance="1e-10"/>
+
+  <size nconmax="200" njmax="1000"/>
+
+  <asset>
+    <mesh name="base_link" file="base_link.STL"/>
+    <mesh name="link_ke1" file="link_ke1.STL"/>
+    <mesh name="link_ke2" file="link_ke2.STL"/>
+    <mesh name="link_ke3" file="link_ke3.STL"/>
+  </asset>
+
+  <worldbody>
+
+    <!-- 固定基座 -->
+    <geom
+        name="base_geom"
+        type="mesh"
+        rgba="1 1 1 1"
+        mesh="base_link"/>
+
+    <!-- link_ke1：使用自由关节，由两个 connect 构造旋转副 -->
+    <body
+        name="link_ke1"
+        pos="-0.07844 0.13593 -0.032"
+        quat="0.690017 0.211191 -0.674832 0.15452">
+
+      <inertial
+          pos="0.0052614 0.021193 -1.1657e-05"
+          quat="0.5566 0.436466 -0.55618 0.4363"
+          mass="0.11476"
+          diaginertia="0.00023354 0.00021266 3.77629e-05"/>
+
+      <freejoint name="free_ke1"/>
+
+      <geom
+          name="geom_ke1"
+          type="mesh"
+          rgba="0.95686 0.7451 0.84706 1"
+          mesh="link_ke1"/>
+
+      <!-- 两个局部锚点：沿原旋转轴布置，间距 30 mm -->
+      <site
+          name="ke1_axis_site_a"
+          pos="0 0 -0.015"
+          size="0.003"
+          rgba="1 0 0 1"/>
+
+      <site
+          name="ke1_axis_site_b"
+          pos="0 0 0.015"
+          size="0.003"
+          rgba="0 1 0 1"/>
+
+    </body>
+
+    <!-- 其余两个刚体暂时保持原有设置 -->
+    <body
+        name="link_ke2"
+        pos="-0.07844 -0.136 -0.032"
+        quat="0.211189 0.690018 -0.154517 0.674833">
+
+      <inertial
+          pos="0.0052488 0.021246 -1.1631e-05"
+          quat="0.556456 0.436652 -0.556034 0.436484"
+          mass="0.11493"
+          diaginertia="0.00023382 0.000212875 3.78293e-05"/>
+
+      <joint
+          name="joint_ke2"
+          pos="0 0 0"
+          axis="0 0 1"/>
+
+      <geom
+          name="geom_ke2"
+          type="mesh"
+          rgba="0.95686 0.7451 0.84706 1"
+          mesh="link_ke2"/>
+
+    </body>
+
+    <body
+        name="link_ke3"
+        pos="0.15706 -3.4828e-05 -0.032"
+        quat="0.478825 -0.478827 -0.520312 -0.520313">
+
+      <inertial
+          pos="0.00012081 7.1779e-05 -0.036715"
+          quat="0.423924 0.566002 -0.423741 0.566016"
+          mass="1.6884"
+          diaginertia="0.038493 0.0219947 0.0219103"/>
+
+      <joint
+          name="joint_ke3"
+          pos="0 0 0"
+          axis="0 0 1"/>
+
+      <geom
+          name="geom_ke3"
+          type="mesh"
+          rgba="1 1 1 1"
+          mesh="link_ke3"/>
+
+    </body>
+
+    <!-- 世界坐标系中的两个固定锚点 -->
+    <site
+        name="world_axis_site_a"
+        pos="-0.0654496 0.1434300 -0.032"
+        size="0.003"
+        rgba="1 0 0 1"/>
+
+    <site
+        name="world_axis_site_b"
+        pos="-0.0914304 0.1284300 -0.032"
+        size="0.003"
+        rgba="0 1 0 1"/>
+
+  </worldbody>
+
+  <equality>
+
+    <!-- 将刚体上的两个 Site 分别约束到世界坐标系中的固定 Site -->
+    <connect
+        name="connect_ke1_a"
+        site1="ke1_axis_site_a"
+        site2="world_axis_site_a"
+        solref="0.002 1"
+        solimp="0.99 0.999 0.001"/>
+
+    <connect
+        name="connect_ke1_b"
+        site1="ke1_axis_site_b"
+        site2="world_axis_site_b"
+        solref="0.002 1"
+        solimp="0.99 0.999 0.001"/>
+
+  </equality>
+
+</mujoco>
